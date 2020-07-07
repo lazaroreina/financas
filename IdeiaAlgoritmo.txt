@@ -1,0 +1,60 @@
+
+Qual a intenção com o código?
+	
+	Consolidar dados de indicadores financeiros de determinadas empresas.
+
+O que vai acontecer com os dados quando o programa encerrar?
+
+	Não pode sumir, precisam ser armazenados.
+
+Os dados serão tratados como objetos? (Resolvendo)
+
+	Preferencialmente.
+
+
+Construa uma 'árvore de dados'
+
+
+	ação
+		balanço
+			ativo
+				circulante
+
+				nao circulante
+			
+			passivo
+
+				circulante
+
+				nao circulante
+
+		dre
+
+				...
+
+
+
+
+
+
+		fluxo de caixa
+			
+				...
+
+		indicadores
+
+				financeiros
+
+					liquidez
+
+					necessidade de capital de giro
+
+				estrutura de capital
+
+	
+				endividamento
+
+
+				rentabilidade
+
+				
