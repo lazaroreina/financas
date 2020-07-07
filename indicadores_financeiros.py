@@ -12,6 +12,7 @@ empresa.get_values()
 print(empresa.ticker, '\n', empresa.values_ativo)
 print(empresa.values_passivo)
 print(empresa.values_indicadores)
+print('teste de git')
 
 
 
