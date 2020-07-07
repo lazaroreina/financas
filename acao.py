@@ -239,6 +239,4 @@ class Acao:
 
         print(dado)
 
-    def teste():
-
-        pass
+   
