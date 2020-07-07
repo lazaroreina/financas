@@ -238,3 +238,7 @@ class Acao:
     def prima(self, dado):
 
         print(dado)
+
+    def teste():
+
+        pass
