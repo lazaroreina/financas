@@ -178,7 +178,7 @@ class Acao:
         self.values_indicadores['liquidez_seca'] = (self.values_ativo['ativo_circulante'] - self.values_ativo['estoques']) / self.values_passivo['passivo_circulante']
         return True
 
-                ######## Indicadores de necessidade de capital de giro ########
+                ######## Indicadores de capital de giro ########
     
 
     def get_ncg(self): # Obtém a Necessidade de Capital de Giro
@@ -188,6 +188,23 @@ class Acao:
     def get_ccl(self): # Obtém o Capital Circulante Líquido
         self.values_indicadores['ccl'] = self.values_ativo['ativo_circulante'] - self.values_passivo['passivo_circulante']
         return True
+
+                ######## Indicadores de prazos médios operacionais ########
+
+    def get_pmestocagem(self): 
+        """
+        Obtém o prazo médio de estocagem de matéria-prima
+        """
+        return True
+
+    def get_pmfabricacao(self):
+        """
+        Obtém o prazo médio de fabricação do produto final
+        """
+        return True
+
+
+
 
 
 
