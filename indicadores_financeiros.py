@@ -10,9 +10,9 @@ empresa  = Acao(ticker='LREN3.SA')
 empresa.get_values()
 
 print(empresa.ticker, '\n', empresa.values_ativo)
-print(empresa.values_passivo)
-print(empresa.values_indicadores)
-
+print('\n',empresa.values_passivo)
+print('\n',empresa.values_indicadores)
+print('\n', empresa.values_dre)
 
 
 

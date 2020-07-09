@@ -13,9 +13,10 @@ class Acao:
     ################################
 
     values_ativo = {'ativo_circulante':0.0, 'caixa_equivalentes':0.0, 'contas_receber': 0.0, 'estoques':0.0, 'despesas_antecipadas':0.0,
-    'realizavel_lp':0.0, 'ativos_operacionais':0.0, 'ativos_financeiros':0.0, 'ativo_nao_circulante':0.0 }
+    'realizavel_lp':0.0, 'ativos_operacionais':0.0, 'ativos_financeiros':0.0, 'ativo_nao_circulante':0.0, 'estoque_medio':0.0}
     values_passivo = {'passivo_circulante':0.0, 'fornecedores':0.0, 'tributos':0.0, 'obrigacoes_trabalhistas':0.0,'emprestimos_cp':0.0,'exigivel_lp':0.0,
     'passivos_operacionais': 0.0, 'passivos_financeiros':0.0, 'passivo_nao_circulante_e_pl':0.0}
+    values_dre = {'receita_liquida':0.0, 'cmv':0.0}
     values_indicadores = {'liquidez_corrente':0.0,'liquidez_seca':0.0,'liquidez_imediata':0.0,'ncg':0.0, 'ccl':0.0}
     
     ################################
@@ -157,6 +158,22 @@ class Acao:
         self.values_passivo['passivo_nao_circulante_e_pl'] = rdado()
         return True
 
+                        ##### DRE #####
+    
+    def get_receita_liquida(self):
+        """
+        Obtém os dados da receita líquida
+        """
+        self.values_dre['receita_liquida'] = rdado()
+        return True
+    
+    def get_cmv(self):
+        """
+        Obtém dados do CMV (Custo da Mercadoria Vendida)
+        """
+        self.values_dre['cmv'] = rdado()
+        return True
+
     ################################
     # Sessão relacionada ao cálculo dos indicadores
     ################################
@@ -202,10 +219,24 @@ class Acao:
         Obtém o prazo médio de fabricação do produto final
         """
         return True
-
-
-
-
+    
+    def get_pmacabados(self):
+        """
+        Obtém o prazo médio de estocagem de produtos acabados
+        """
+        return True
+    
+    def get_pmclientes(self):
+        """
+        Obtém o prazo médio de recebimento dos produtos vendidos
+        """
+        return True
+    
+    def get_pmfornecedores(self):
+        """
+        Obtém o prazo médio de pagamento a fornecedores
+        """
+        return True
 
 
     ################################
@@ -236,6 +267,11 @@ class Acao:
         self.get_passivo_nao_circulante_e_pl()
         self.get_passivos_operacionais()
         self.get_passivos_financeiros()
+
+        ################################ DRE #############################
+        
+        self.get_receita_liquida()
+        self.get_cmv()
 
         ################################ Indicadores Liquidez #############################
 
