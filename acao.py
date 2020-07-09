@@ -162,14 +162,14 @@ class Acao:
     
     def get_receita_liquida(self):
         """
-        Obtém os dados da receita líquida
+        Obtém os dados da receita líquida.\n 
         """
         self.values_dre['receita_liquida'] = rdado()
         return True
     
     def get_cmv(self):
         """
-        Obtém dados do CMV (Custo da Mercadoria Vendida)
+        Obtém dados do CMV (Custo da Mercadoria Vendida).\n
         """
         self.values_dre['cmv'] = rdado()
         return True
@@ -180,29 +180,41 @@ class Acao:
 
                 #### Indicadores de liquidez ####
 
-    def get_liquidez_corrente(self):# Obtem a liquidez corrente da empresa - Aprimorar para detalhar o período de análise
-        
+    def get_liquidez_corrente(self):
+        """
+        Obtem a liquidez corrente da empresa - Aprimorar para detalhar o período de análise.\n
+        """
         self.values_indicadores['liquidez_corrente'] = self.values_ativo['ativo_circulante'] / self.values_passivo['passivo_circulante']
         return True
 
-    def get_liquidez_imediata(self): # Obtém a liquidez imediata da empresa - Aprimorar para detalhar o perído de análise
-        
+    def get_liquidez_imediata(self): 
+        """
+        Obtém a liquidez imediata da empresa - Aprimorar para detalhar o perído de análise.\n
+        """
         self.values_indicadores['liquidez_imediata'] = self.values_ativo['caixa_equivalentes'] / self.values_passivo['passivo_circulante']
         return True
 
     def get_liquidez_seca(self):
-
+        """
+        Obtém a liquidez seca.\n
+        """
         self.values_indicadores['liquidez_seca'] = (self.values_ativo['ativo_circulante'] - self.values_ativo['estoques']) / self.values_passivo['passivo_circulante']
         return True
 
                 ######## Indicadores de capital de giro ########
     
 
-    def get_ncg(self): # Obtém a Necessidade de Capital de Giro
+    def get_ncg(self):
+        """
+        Obtém a Necessidade de Capital de Giro.\n
+        """
         self.values_indicadores['ncg'] = self.values_ativo['ativos_operacionais'] - self.values_passivo['passivos_operacionais']
         return True
 
-    def get_ccl(self): # Obtém o Capital Circulante Líquido
+    def get_ccl(self): 
+        """
+        Obtém o Capital Circulante Líquido.\n
+        """
         self.values_indicadores['ccl'] = self.values_ativo['ativo_circulante'] - self.values_passivo['passivo_circulante']
         return True
 
@@ -210,31 +222,31 @@ class Acao:
 
     def get_pmestocagem(self): 
         """
-        Obtém o prazo médio de estocagem de matéria-prima
+        Obtém o prazo médio de estocagem de matéria-prima.\n
         """
         return True
 
     def get_pmfabricacao(self):
         """
-        Obtém o prazo médio de fabricação do produto final
+        Obtém o prazo médio de fabricação do produto final.\n
         """
         return True
     
     def get_pmacabados(self):
         """
-        Obtém o prazo médio de estocagem de produtos acabados
+        Obtém o prazo médio de estocagem de produtos acabados.\n
         """
         return True
     
     def get_pmclientes(self):
         """
-        Obtém o prazo médio de recebimento dos produtos vendidos
+        Obtém o prazo médio de recebimento dos produtos vendidos.\n
         """
         return True
     
     def get_pmfornecedores(self):
         """
-        Obtém o prazo médio de pagamento a fornecedores
+        Obtém o prazo médio de pagamento a fornecedores.\n
         """
         return True
 
@@ -244,6 +256,9 @@ class Acao:
     ################################
 
     def get_values(self):
+        """
+        Carrega valores envolvidos na análise.\n
+        """
 
         ################################ Ativo #############################
 
