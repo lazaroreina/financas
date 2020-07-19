@@ -17,7 +17,10 @@ class Acao:
     values_passivo = {'passivo_circulante':0.0, 'fornecedores':0.0, 'tributos':0.0, 'obrigacoes_trabalhistas':0.0,'emprestimos_cp':0.0,'exigivel_lp':0.0,
     'passivos_operacionais': 0.0, 'passivos_financeiros':0.0, 'passivo_nao_circulante_e_pl':0.0}
     values_dre = {'receita_liquida':0.0, 'cmv':0.0}
-    values_indicadores = {'liquidez_corrente':0.0,'liquidez_seca':0.0,'liquidez_imediata':0.0,'ncg':0.0, 'ccl':0.0}
+    values_gerenciais = {'estoque_mat_prima':0.0, 'consumo_estoque':0.0, 'estoque_elaboracao':0.0, 'custo_producao':0.0, 'estoque_acabado':0.0,'cpv':0.0, 
+    'duplicatas_receber': 0.0, 'vendas_prazo': 0.0, 'fornecedores_pagar': 0.0, 'compras_prazo':0.0}
+    values_indicadores = {'liquidez_corrente':0.0,'liquidez_seca':0.0,'liquidez_imediata':0.0,'ncg':0.0, 'ccl':0.0, 'pme': 0.0,
+    'pmf':0.0, 'pmv': 0.0, 'pmc':0.0, 'pmpf':0.0}
     
     ################################
     # Sessão relacionada a obtenção das contas contábeis que serão usadas no cálculos dos indicadores
@@ -93,7 +96,7 @@ class Acao:
         self.values_ativo['ativo_nao_circulante'] = rdado()
         return True
 
-                ##### Passivo #####
+                        ##### Passivo #####
 
     def get_passivo_circulante(self): 
         """
@@ -174,6 +177,58 @@ class Acao:
         self.values_dre['cmv'] = rdado()
         return True
 
+
+                        ######## Valores Gerenciais #######
+
+    
+    def get_estoque_mat_prima(self):
+        """
+        Obtém dados gerenciais do estoque médio de matéria prima.\n
+        """
+        self.values_gerenciais['estoque_mat_prima'] = rdado()
+        return True
+
+    def get_consumo_estoque(self):
+        """
+        Obtém dados gerenciais do consumo médio de estoques de materia prima.\n
+        """
+        self.values_gerenciais['consumo_estoque'] = rdado()
+        return True
+
+    def get_estoque_elaboracao(self):
+        """
+        Obtém dados gerenciais do estoque médio de produtos em elaboração.\n
+        """
+        self.values_gerenciais['estoque_elaboracao'] = rdado()
+        return True
+    
+    def get_custo_producao(self):
+        """
+        Obtém dados gerenciais do custo médio de produção.\n
+        """
+        self.values_gerenciais['custo_producao'] = rdado()
+        return True
+
+    def get_estoque_acabado(self):
+        """
+        Obtém dados gerenciais do estoque médio de produtos acabados.\n
+        """
+        self.values_gerenciais['estoque_acabado'] = rdado()
+        return True
+
+    def get_duplicatas_receber(self):
+        """
+        Obtém dados gerenciais do saldo médio das duplicatas a receber.\n
+        """
+        self.values_gerenciais['duplicatas_receber'] = rdado()
+        return True
+
+    def get_vendas_prazo(self):
+        """
+        Obtém dados gerenciais ...
+        """
+
+
     ################################
     # Sessão relacionada ao cálculo dos indicadores
     ################################
@@ -220,34 +275,39 @@ class Acao:
 
                 ######## Indicadores de prazos médios operacionais ########
 
-    def get_pmestocagem(self): 
+    def get_pme(self): 
         """
         Obtém o prazo médio de estocagem de matéria-prima.\n
         """
+        self.values_indicadores['pme'] = self.values_gerenciais['estoque_mat_prima'] / self.values_gerenciais['consumo_estoque']
         return True
 
-    def get_pmfabricacao(self):
+    def get_pmf(self):
         """
         Obtém o prazo médio de fabricação do produto final.\n
         """
+        self.values_indicadores['pmf'] = self.values_gerenciais['estoque_elaboracao'] / self.values_gerenciais['custo_producao']
         return True
     
-    def get_pmacabados(self):
+    def get_pmv(self):
         """
         Obtém o prazo médio de estocagem de produtos acabados.\n
         """
+        self.values_indicadores = self.values_gerenciais['estoque_acabado'] / self.values_gerenciais['cpv']
         return True
     
-    def get_pmclientes(self):
+    def get_pmc(self):
         """
         Obtém o prazo médio de recebimento dos produtos vendidos.\n
         """
+        self.values_indicadores['pmc'] = self.values_gerenciais['duplicatas_receber'] / self.values_gerenciais['vendas_prazo']
         return True
     
-    def get_pmfornecedores(self):
+    def get_pmpf(self):
         """
         Obtém o prazo médio de pagamento a fornecedores.\n
         """
+        self.values_indicadores['pmpf'] = self.values_gerenciais['fornecedores_pagar'] / self.values_gerenciais['compras_prazo']
         return True
 
 
