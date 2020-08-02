@@ -38,7 +38,12 @@ class Acao:
 
         print('Carregando dados do ativo: ')
         for c in self.values_ativo:
-            self.values_ativo[c] = self.privateimput(c)
+            if c == 'ativos_operacionais':
+                self.values_ativo[c] = (self.values_ativo['caixa_equivalentes'] / 365 * 45) + self.values_ativo['estoques'] + self.values_ativo['contas_receber']
+            elif c == 'ativos_financeiros':
+                self.values_ativo[c] = self.values_ativo['ativo_circulante'] - self.values_ativo['ativos_operacionais']
+            else:
+                self.values_ativo[c] = self.privateimput(c)
 
         ################################ Passivo #############################
 

@@ -12,6 +12,7 @@ empresa.get_values()
 empresa.get_indicadores()
 
 table = pd.Series(empresa.values_indicadores)
+print('\n')
 print('*'*40)
 print(table)
-
+print('*'*40)
