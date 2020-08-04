@@ -1,4 +1,4 @@
-import random
+import random, time
 
 def rdado():
 
@@ -36,7 +36,8 @@ class Acao:
 
         ################################ Ativo #############################
 
-        print('Carregando dados do ativo: ')
+        print('Carregando dados do ativo da empresa {}: '.format(self.ticker))
+        
         for c in self.values_ativo:
             if c == 'ativos_operacionais':
                 self.values_ativo[c] = (self.values_ativo['caixa_equivalentes'] / 365 * 45) + self.values_ativo['estoques'] + self.values_ativo['contas_receber']
@@ -47,19 +48,22 @@ class Acao:
 
         ################################ Passivo #############################
 
-        print('Carregando dados do passivo:')    
+        print('Carregando dados do passivo da empresa {}: '.format(self.ticker))
+
         for c in self.values_passivo:
             self.values_passivo[c] = self.privateimput(c)
 
         ################################ DRE #############################
         
-        print('Carregando dados da DRE: ')
+        print('Carregando dados da DRE da empresa {}: '.format(self.ticker))
+    
         for c in self.values_dre:
             self.values_dre[c] = self.privateimput(c)
 
         ################################ Valores Gerenciais ##############################    
 
-        print('Carregando dados gerenciais: ')
+        print('Carregando dados gerenciais da empresa {}: '.format(self.ticker))
+        
         for c in self.values_gerenciais:
             self.values_gerenciais[c] = self.privateimput(c)
 
@@ -113,35 +117,35 @@ class Acao:
         """
         Obtém o prazo médio de estocagem de matéria-prima.\n
         """
-        self.values_indicadores['pme'] = self.values_gerenciais['estoque_mat_prima'] / self.values_gerenciais['consumo_estoque']
+        self.values_indicadores['pme'] = self.values_gerenciais['estoque_mat_prima'] / self.values_gerenciais['consumo_estoque'] * 365
         return True
 
     def get_pmf(self):
         """
         Obtém o prazo médio de fabricação do produto final.\n
         """
-        self.values_indicadores['pmf'] = self.values_gerenciais['estoque_elaboracao'] / self.values_gerenciais['custo_producao']
+        self.values_indicadores['pmf'] = self.values_gerenciais['estoque_elaboracao'] / self.values_gerenciais['custo_producao'] * 365
         return True
     
     def get_pmv(self):
         """
         Obtém o prazo médio de estocagem de produtos acabados.\n
         """
-        self.values_indicadores['pmv'] = self.values_gerenciais['estoque_acabado'] / self.values_gerenciais['cpv']
+        self.values_indicadores['pmv'] = self.values_gerenciais['estoque_acabado'] / self.values_gerenciais['cpv'] * 365
         return True
     
     def get_pmc(self):
         """
         Obtém o prazo médio de recebimento dos produtos vendidos.\n
         """
-        self.values_indicadores['pmc'] = self.values_gerenciais['duplicatas_receber_media'] / self.values_gerenciais['vendas_prazo']
+        self.values_indicadores['pmc'] = self.values_gerenciais['duplicatas_receber_media'] / self.values_gerenciais['vendas_prazo'] * 365
         return True
     
     def get_pmpf(self):
         """
         Obtém o prazo médio de pagamento a fornecedores.\n
         """
-        self.values_indicadores['pmpf'] = self.values_gerenciais['fornecedores_pagar'] / self.values_gerenciais['compras_prazo']
+        self.values_indicadores['pmpf'] = self.values_gerenciais['fornecedores_pagar'] / self.values_gerenciais['compras_prazo'] * 365
         return True
 
 
